@@ -54,6 +54,10 @@ def write_line(path):
     if back != LINE:
         print("entry rejected: read-back differs from the line", file=sys.stderr)
         return 1
+    if len(back.encode("utf-8")) != len(LINE.encode("utf-8")):
+        print("entry rejected: written bytes differ from the line",
+              file=sys.stderr)
+        return 1
     return 0
 
 
